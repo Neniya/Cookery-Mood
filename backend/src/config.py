@@ -18,3 +18,5 @@ db_name = "easylist"
 SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}/{}'.format(
                 db_username, db_password, db_host, db_name 
                 )
+
+
