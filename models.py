@@ -1,12 +1,16 @@
 from flask_sqlalchemy import SQLAlchemy
 
+import os
+
 db = SQLAlchemy()
 
 database_name = "easylist"
 DB_USERNAME = "postgres"
 DB_PASSWORD = "postgres123"
-database_path = "postgresql://{}:{}@{}/{}".format(
-    DB_USERNAME, DB_PASSWORD, 'localhost:5432', database_name)
+database_path = database_path = os.environ['DATABASE_URL'] \
+    if 'DATABASE_URL' in os.environ \
+    else "postgresql://{}:{}@{}/{}".format(
+        DB_USERNAME, DB_PASSWORD, 'localhost:5432', database_name)
 
 
 def setup_db(app, database_path=database_path):
