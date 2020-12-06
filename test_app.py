@@ -4,7 +4,7 @@ import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
 # sys.path.append("../")
-from app import create_app
+from api import create_app
 from models import db, setup_db, Recipe, Mesuare, Item, RecipeItem
 
 # Tokens
