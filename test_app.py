@@ -8,10 +8,8 @@ from api import create_app
 from models import db, setup_db, Recipe, Mesuare, Item, RecipeItem
 
 # Tokens
-USER_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmMxMWU1YjZmOWNkMDAwNmJmZTUwNjEiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDY1OTU0NTYsImV4cCI6MTYwNjYwMjY1NiwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpyZWNpcGVzLWRldGFpbCJdfQ.TBa5tldLZ5hrr1ClO2ImaU5cIkioGVJo_fgHGyCQYLbfnn4SVhyyqsW39kEI5xMSY67vvdEIrB-pouC44p4AIqhRjC8l7Q8RN_RW5ujIUnsL9jrdegdMIv0x_9FyAh9rhloKhPC9yj52sAadk-_I9pvOoz0obrj7B_dF-4wiQGG3W1I0zAmAiTbG6K85KX8b_DyDJ-O3bv-c0ea0Zs-y3ne9ULczJhaK8gzA5NYBjvgywYTTXjwq_2S5HEOfPnoc1wbnSSVmh9AG5SWd4f7ffO1BYjsIlYzTaiQ1T53D3g9VGmZWVHRaa9jbz5c9-xinz1FQLS7-38nOgBM2KXwaVA'
-ADMINISTRATOR_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmM2Nzk3NTVlZGYyODAwNjg0MzE2N2YiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDcwODYwODgsImV4cCI6MTYwNzA5MzI4OCwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpyZWNpcGVzIiwiZ2V0OnJlY2lwZXMtZGV0YWlsIiwicGF0Y2g6cmVjaXBlcyIsInBvc3Q6cmVjaXBlcyJdfQ.P0ymdonU907i4U8yID__fP0ybea2QNr0-Lf7Zr8pQerI1-MJIhJpXK-yhqWZAYZvIxq6i06WlU9XW3xeWyJwJtuv5x6owcBYiamyyL-faP5ige95ErMLMEIFjr9E1M04I3U5rDUP_EF7ipb9ufn8NLSQPduz-goIfvXejZRx1of6KBalDksI_kGCUa6HpTARLNg4s-f9X3BPMvAIN9jzau8u6co5uDOHot25WgCoacbjy93c05NA_7TAJAIUFmDAZgFzRqOyiOP-kDZD95rTv-LAK4ipd8rVbvcMovs1dytjhhSa_GB8rFyvtV7_uOM6_ddBDk3Ljb3XAd4o1EP68g'
-
-
+USER_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmMxMWU1YjZmOWNkMDAwNmJmZTUwNjEiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDczNzExOTYsImV4cCI6MTYwNzM3ODM5NiwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpyZWNpcGVzLWRldGFpbCJdfQ.qXHmkCy1uLzTYNpkyhd6kKx8smCSbAg26_b3Uo93HM38txHwDt8RaLpKmQVJz1qWwk81cGrys1n_BoIZjif8fC9lP8CvJXE40iUd_M34cE7gRSSdcAeu-Yd4JxD021CP3zuUbBUiVHD6I4D3KKPAzkASnu2aEQRu414Wmn9GZc6q_YqyAS4kyWN-wp2xV0m4g-N8jkbYw3EPUvvaWxY0KFQ91hqqwZaVVUeIwLmVxewGJUHk5nPhgKZE5XLICYFb2DLwDD90-ew5LoePC3s5o6VFIthpkoUPtUWVoKRxgyBgD9TrP_ejr6TmM-pv8pEPKCmTsF25Pbimij4myG7Krw'
+ADMINISTRATOR_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmM2Nzk3NTVlZGYyODAwNjg0MzE2N2YiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDczNzEzNDQsImV4cCI6MTYwNzM3ODU0NCwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpyZWNpcGVzIiwiZ2V0OnJlY2lwZXMtZGV0YWlsIiwicGF0Y2g6cmVjaXBlcyIsInBvc3Q6cmVjaXBlcyJdfQ.tVTX523MCGbzi5j3Gj9cekITivB9CtMKWWp79qvWaCZTOK1U6nwzO9Wr2wrK32TIxXon-OoTbs0MNm7S27Q1cp34R0GuVPswqGU69vzyulpklgdTeKLpPCY3m2UGRdFaug0AAN3WQ_fw1HFOUXzLgh9PwLevvbbDMcaIXDs17E_ElotP-J7e2DNE_BquWqLBI8D5YQ0IuN1zLRJv7ujZll9aTXt-qTYYfaaY2g40WJ-dQsZ5yujNmH7Ye90KnREQ7pZWv-7p2VKjrqebVaF-oyFyWdAOyos2OJKILidsv8RoWHI4hsd41WIPDX7z6QIRnUUkfctaLQxep5mBfnQLmQ'
 def init_new_recipe():
     return {
         "name": "Potato salad",
@@ -106,8 +104,9 @@ class CookeryMoodTestCase(unittest.TestCase):
 
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 401)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'Unauthorized')
+        self.assertEqual(data['code'], 'unauthorized')
+        self.assertEqual(data['description'], 'Permission not found.')
+       
 
     def test_422_if_recipe_creation_empty_data(self):
         new_recipe = {"name": "Potato salad",
@@ -164,8 +163,8 @@ class CookeryMoodTestCase(unittest.TestCase):
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 401)
-        self.assertEqual(data['success'], False)
-        self.assertEqual(data['message'], 'Unauthorized')
+        self.assertEqual(data['code'], 'unauthorized')
+        self.assertEqual(data['description'], 'Permission not found.')
 
     # if recipe doesn't exist
     def test_404_if_recipe_does_not_exist(self):

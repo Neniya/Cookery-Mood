@@ -41,7 +41,7 @@ def create_app(test_config=None):
     '''
   endpoint GET /recipes
           contains recipes names
-      returns status code 200 and json {"success": True, "recipes": recipes} where drinks is the list of drinks
+      returns status code 200 and json {"success": True, "recipes": recipes} where recipes is the list of recipes
           or appropriate status code indicating reason for failure
   '''
     @app.route('/recipes')
@@ -64,7 +64,7 @@ def create_app(test_config=None):
     '''
   endpoint GET /recipes/<int:recipe_id>
           requires the 'get:recipes-detail' permission
-      returns status code 200 and json {"success": True, "drinks": drinks} where drinks is the list of ingredients
+      returns status code 200 and json {"success": True,..., "items": items} where items is the list of ingredients
           or appropriate status code indicating reason for failure
   '''
     @app.route('/recipes/<int:recipe_id>')
@@ -139,8 +139,8 @@ def create_app(test_config=None):
                     description=new_description,
                 )
 
-                db.session.add(new_recipe)
-                db.session.commit()
+                new_recipe.insert()
+
 
                 for item in new_item_list:
                     new_recipeItem = RecipeItem(
@@ -184,7 +184,7 @@ def create_app(test_config=None):
     @app.route('/recipes/<int:recipe_id>', methods=['PATCH'])
     @requires_auth('patch:recipes')
     def update_recipe(token, recipe_id):
-        '''Updates drink by id'''
+        '''Updates recipe by id'''
         error = 422
         try:
             recipe = Recipe.query.filter(Recipe.id == recipe_id).one_or_none()

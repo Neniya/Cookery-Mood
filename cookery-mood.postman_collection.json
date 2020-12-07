@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "ee39e020-8c58-4016-aba1-3f903b966bc7",
+		"name": "cookery-mood",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Administrator",
+			"item": [
+				{
+					"name": "/recipes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "303ca8db-3e7a-4f5b-8e03-7ad1f90b987b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains recipes array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.recipes).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9272e3ad-571c-49a6-8c2f-c6cb9d511025",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a00da24f-5567-49fd-9a24-d7fa251a9e7a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains recipes array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.recipes).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cucumber Salad\", \n    \"time_to_prepare\": \"10 min\", \n    \"cooking_time\": \" 1 hour(marinade)\", \n    \"description\": \"{1: Toss together the cucumbers and onion in a large bowl. Combine the vinegar, water and sugar in a saucepan over medium-high heat. Bring to a boil, and pour over the cucumber and onions. Stir in dill, cover, and refrigerate until cold. This can also be eaten at room temperature, but be sure to allow the cucumbers to marinate for at least 1 hour.'}\", \n    \"item_list\": [\n                    { \n                        \"count\": 4, \n                        \"item_id\": 7,\n                        \"mesuare_id\": 8\n                    }, \n                    \n                    {\n                        \"count\": 1,  \n                        \"item_id\": 8, \n                        \"mesuare_id\": 8\n                    },\n                    {\n                        \"count\": 0.5,  \n                        \"item_id\": 3, \n                        \"mesuare_id\": 6\n                    },\n                    {\n                        \"count\": 0.75,  \n                        \"item_id\": 9, \n                        \"mesuare_id\": 6\n                    },\n                    {\n                        \"count\": 1,  \n                        \"item_id\": 11, \n                        \"mesuare_id\": 7\n                    }\n                ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/recipes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "09150cf1-26b8-47e0-89b3-09ad0fbc820d",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test potato\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/recipes/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipes/35",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7979f974-2712-4ae3-9667-819a3e3c869a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains recipes array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.recipes).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes/10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmM2Nzk3NTVlZGYyODAwNjg0MzE2N2YiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDczNzEzNDQsImV4cCI6MTYwNzM3ODU0NCwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpyZWNpcGVzIiwiZ2V0OnJlY2lwZXMtZGV0YWlsIiwicGF0Y2g6cmVjaXBlcyIsInBvc3Q6cmVjaXBlcyJdfQ.tVTX523MCGbzi5j3Gj9cekITivB9CtMKWWp79qvWaCZTOK1U6nwzO9Wr2wrK32TIxXon-OoTbs0MNm7S27Q1cp34R0GuVPswqGU69vzyulpklgdTeKLpPCY3m2UGRdFaug0AAN3WQ_fw1HFOUXzLgh9PwLevvbbDMcaIXDs17E_ElotP-J7e2DNE_BquWqLBI8D5YQ0IuN1zLRJv7ujZll9aTXt-qTYYfaaY2g40WJ-dQsZ5yujNmH7Ye90KnREQ7pZWv-7p2VKjrqebVaF-oyFyWdAOyos2OJKILidsv8RoWHI4hsd41WIPDX7z6QIRnUUkfctaLQxep5mBfnQLmQ",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "70c7ae01-c91a-4456-b47e-8747050e7b91",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "85cd75b4-b8d0-48eb-a4ab-e9b4e52bfd3e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "/recipes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0eed9a97-8db0-4cfd-95d5-09cfcd263c08",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains recipes array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.recipes).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e54f7bbf-1293-42d7-847a-3233f187a1e3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b2493091-07c0-442e-ad2d-c21c1bd7efe8",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0d78435-0822-4d68-bf4d-299f07212b4a",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes/5",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recipes/7",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "33579de9-426f-431a-b25f-0eb2f4233307",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/recipes/7",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"recipes",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmMxMWU1YjZmOWNkMDAwNmJmZTUwNjEiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDczNzExOTYsImV4cCI6MTYwNzM3ODM5NiwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpyZWNpcGVzLWRldGFpbCJdfQ.qXHmkCy1uLzTYNpkyhd6kKx8smCSbAg26_b3Uo93HM38txHwDt8RaLpKmQVJz1qWwk81cGrys1n_BoIZjif8fC9lP8CvJXE40iUd_M34cE7gRSSdcAeu-Yd4JxD021CP3zuUbBUiVHD6I4D3KKPAzkASnu2aEQRu414Wmn9GZc6q_YqyAS4kyWN-wp2xV0m4g-N8jkbYw3EPUvvaWxY0KFQ91hqqwZaVVUeIwLmVxewGJUHk5nPhgKZE5XLICYFb2DLwDD90-ew5LoePC3s5o6VFIthpkoUPtUWVoKRxgyBgD9TrP_ejr6TmM-pv8pEPKCmTsF25Pbimij4myG7Krw",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5104d582-5aa0-4ace-a7c3-6a0ce1df2327",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b81a659-d072-4b1c-934b-f84b9eee0ebc",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "82f58961-5517-48e8-9f2c-97c7fc9a7595",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4220197d-9358-439b-b423-de4772d27476",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "03a99c58-cb4c-4985-8756-14454baf5726",
+			"key": "host",
+			"value": "cookerymood.herokuapp.com"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
