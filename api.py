@@ -65,7 +65,8 @@ def create_app(test_config=None):
     '''
   endpoint GET /recipes
           contains recipes names
-      returns status code 200 and json {"success": True, "recipes": recipes} where recipes is the list of recipes
+      returns status code 200 and json {"success": True, "recipes": recipes}
+      where recipes is the list of recipes
           or appropriate status code indicating reason for failure
   '''
     @app.route('/recipes')
@@ -88,7 +89,8 @@ def create_app(test_config=None):
     '''
   endpoint GET /recipes/<int:recipe_id>
           requires the 'get:recipes-detail' permission
-      returns status code 200 and json {"success": True,..., "items": items} where items is the list of ingredients
+      returns status code 200 and json {"success": True,..., "items": items}
+      where items is the list of ingredients
           or appropriate status code indicating reason for failure
   '''
     @app.route('/recipes/<int:recipe_id>')

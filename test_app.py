@@ -19,11 +19,11 @@ def init_new_recipe():
         "cooking_time": "10 min.",
         "description": "{1: ‘step 1’ , 2: ‘step 2'}",
         "item_list": [
-                {
+            {
                     "count": 2,
                     "item_id": 3,
                     "mesuare_id": 6
-                },
+            },
             {
                     "count": 250,
                     "item_id": 2,
@@ -75,7 +75,7 @@ class CookeryMoodTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'resource not found')
 
     '''create recipe'''
-    #POST /recipes
+    # POST /recipes
     '''Administrator'''
 
     def test_create_recipe(self):
@@ -178,7 +178,7 @@ class CookeryMoodTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'resource not found')
 
-    #PATCH /recipes
+    # PATCH /recipes
     '''Administrator'''
 
     def test_update_recipe(self):
