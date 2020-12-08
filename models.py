@@ -26,6 +26,7 @@ def setup_db(app, database_path=database_path):
 
 '''bind recipes and items'''
 
+
 class RecipeItem(db.Model):
     __tablename__ = "recipe_items"
 
@@ -87,7 +88,7 @@ class Recipe(db.Model):
 
     def insert(self):
         db.session.add(self)
-        db.session.commit()    
+        db.session.commit()
 
     def delete(self):
         db.session.delete(self)

@@ -8,8 +8,10 @@ from api import create_app
 from models import db, setup_db, Recipe, Mesuare, Item, RecipeItem
 
 # Tokens
-USER_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmMxMWU1YjZmOWNkMDAwNmJmZTUwNjEiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDczNzExOTYsImV4cCI6MTYwNzM3ODM5NiwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDpyZWNpcGVzLWRldGFpbCJdfQ.qXHmkCy1uLzTYNpkyhd6kKx8smCSbAg26_b3Uo93HM38txHwDt8RaLpKmQVJz1qWwk81cGrys1n_BoIZjif8fC9lP8CvJXE40iUd_M34cE7gRSSdcAeu-Yd4JxD021CP3zuUbBUiVHD6I4D3KKPAzkASnu2aEQRu414Wmn9GZc6q_YqyAS4kyWN-wp2xV0m4g-N8jkbYw3EPUvvaWxY0KFQ91hqqwZaVVUeIwLmVxewGJUHk5nPhgKZE5XLICYFb2DLwDD90-ew5LoePC3s5o6VFIthpkoUPtUWVoKRxgyBgD9TrP_ejr6TmM-pv8pEPKCmTsF25Pbimij4myG7Krw'
-ADMINISTRATOR_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNsZldpbHJlX0cwbFIzVi1jc2NSMyJ9.eyJpc3MiOiJodHRwczovL2Vhc3lsaXN0LmV1LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZmM2Nzk3NTVlZGYyODAwNjg0MzE2N2YiLCJhdWQiOiJyZWNpcGUiLCJpYXQiOjE2MDczNzEzNDQsImV4cCI6MTYwNzM3ODU0NCwiYXpwIjoiNnRaNHIxd3Bvbk1yckhUaDk0YUxMR3JrVlJ5Y3FCR0UiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpyZWNpcGVzIiwiZ2V0OnJlY2lwZXMtZGV0YWlsIiwicGF0Y2g6cmVjaXBlcyIsInBvc3Q6cmVjaXBlcyJdfQ.tVTX523MCGbzi5j3Gj9cekITivB9CtMKWWp79qvWaCZTOK1U6nwzO9Wr2wrK32TIxXon-OoTbs0MNm7S27Q1cp34R0GuVPswqGU69vzyulpklgdTeKLpPCY3m2UGRdFaug0AAN3WQ_fw1HFOUXzLgh9PwLevvbbDMcaIXDs17E_ElotP-J7e2DNE_BquWqLBI8D5YQ0IuN1zLRJv7ujZll9aTXt-qTYYfaaY2g40WJ-dQsZ5yujNmH7Ye90KnREQ7pZWv-7p2VKjrqebVaF-oyFyWdAOyos2OJKILidsv8RoWHI4hsd41WIPDX7z6QIRnUUkfctaLQxep5mBfnQLmQ'
+USER_TOKEN = os.environ['USER_TOKEN']
+ADMINISTRATOR_TOKEN = os.environ['ADMINISTRATOR_TOKEN']
+
+
 def init_new_recipe():
     return {
         "name": "Potato salad",
@@ -26,7 +28,7 @@ def init_new_recipe():
                     "count": 250,
                     "item_id": 2,
                     "mesuare_id": 2
-                }
+            }
         ]
     }
 
@@ -81,7 +83,7 @@ class CookeryMoodTestCase(unittest.TestCase):
 
         res = self.client().post(
             '/recipes',
-            headers={'Authorization': 'Bearer ' + ADMINISTRATOR_TOKEN},
+            headers={'Authorization': 'Bearer ' + str(ADMINISTRATOR_TOKEN)},
             json=new_recipe
         )
 
@@ -98,7 +100,7 @@ class CookeryMoodTestCase(unittest.TestCase):
 
         res = self.client().post(
             '/recipes',
-            headers={'Authorization': 'Bearer ' + USER_TOKEN},
+            headers={'Authorization': 'Bearer ' + str(USER_TOKEN)},
             json=new_recipe
         )
 
@@ -106,7 +108,6 @@ class CookeryMoodTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 401)
         self.assertEqual(data['code'], 'unauthorized')
         self.assertEqual(data['description'], 'Permission not found.')
-       
 
     def test_422_if_recipe_creation_empty_data(self):
         new_recipe = {"name": "Potato salad",
@@ -116,7 +117,7 @@ class CookeryMoodTestCase(unittest.TestCase):
                       "item_list": []}
         res = self.client().post(
             '/recipes',
-            headers={'Authorization': 'Bearer ' + ADMINISTRATOR_TOKEN},
+            headers={'Authorization': 'Bearer ' + str(ADMINISTRATOR_TOKEN)},
             json=new_recipe
         )
         data = json.loads(res.data)
@@ -132,7 +133,7 @@ class CookeryMoodTestCase(unittest.TestCase):
         new_recipe = init_new_recipe()
         res_new = self.client().post(
             '/recipes',
-            headers={'Authorization': 'Bearer ' + ADMINISTRATOR_TOKEN},
+            headers={'Authorization': 'Bearer ' + str(ADMINISTRATOR_TOKEN)},
             json=new_recipe
         )
 
@@ -140,7 +141,7 @@ class CookeryMoodTestCase(unittest.TestCase):
         id_new = data_new['created']
         res = self.client().delete(
             '/recipes/{}'.format(id_new),
-            headers={'Authorization': 'Bearer ' + ADMINISTRATOR_TOKEN}
+            headers={'Authorization': 'Bearer ' + str(ADMINISTRATOR_TOKEN)}
         )
         data = json.loads(res.data)
 
@@ -158,7 +159,7 @@ class CookeryMoodTestCase(unittest.TestCase):
 
         res = self.client().delete(
             '/recipes/17',
-            headers={'Authorization': 'Bearer ' + USER_TOKEN}
+            headers={'Authorization': 'Bearer ' + str(USER_TOKEN)}
         )
         data = json.loads(res.data)
 
@@ -170,7 +171,7 @@ class CookeryMoodTestCase(unittest.TestCase):
     def test_404_if_recipe_does_not_exist(self):
         res = self.client().delete(
             '/recipes/10000',
-            headers={'Authorization': 'Bearer ' + ADMINISTRATOR_TOKEN})
+            headers={'Authorization': 'Bearer ' + str(ADMINISTRATOR_TOKEN)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -185,7 +186,7 @@ class CookeryMoodTestCase(unittest.TestCase):
 
         res = self.client().patch(
             '/recipes/5',
-            headers={'Authorization': 'Bearer ' + ADMINISTRATOR_TOKEN},
+            headers={'Authorization': 'Bearer ' + str(ADMINISTRATOR_TOKEN)},
             json={"name": "Potato"}
         )
 
@@ -197,7 +198,7 @@ class CookeryMoodTestCase(unittest.TestCase):
     def test_404_if_updated_recipe_does_not_exist(self):
         res = self.client().patch(
             '/recipes/10000',
-            headers={'Authorization': 'Bearer ' + ADMINISTRATOR_TOKEN},
+            headers={'Authorization': 'Bearer ' + str(ADMINISTRATOR_TOKEN)},
             json={"name": "Potato"}
         )
         data = json.loads(res.data)

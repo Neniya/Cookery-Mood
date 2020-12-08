@@ -1,13 +1,28 @@
 import os
 import sys
 import json
-from flask import Flask, request, abort, jsonify
+from flask import (
+    Flask,
+    request,
+    abort,
+    jsonify
+)
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from flask_migrate import Migrate
 # sys.path.append('../')
-from models import db, setup_db, Recipe, Mesuare, Item, RecipeItem
-from auth import AuthError, requires_auth
+from models import (
+    db,
+    setup_db,
+    Recipe,
+    Mesuare,
+    Item,
+    RecipeItem
+)
+from auth import (
+    AuthError,
+    requires_auth
+)
 
 # paginate recipes (RECIPES_PER_PAGE - recipes per page)
 RECIPES_PER_PAGE = 10
@@ -38,6 +53,15 @@ def create_app(test_config=None):
         return response
 
     # ROUTES
+
+    @app.route('/')
+    def index():
+        return jsonify(
+            {
+                'message': 'Welcome to "Cookery Mood" application'
+            }
+        )
+
     '''
   endpoint GET /recipes
           contains recipes names
@@ -140,7 +164,6 @@ def create_app(test_config=None):
                 )
 
                 new_recipe.insert()
-
 
                 for item in new_item_list:
                     new_recipeItem = RecipeItem(

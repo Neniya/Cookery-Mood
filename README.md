@@ -20,6 +20,22 @@ The application:
 **Pre-requisites and Local Development**
 Developers using this project should already have Python3, pip, and node installed on their local machines.
 
+## DATA MODELING:
+MODELS.PY
+
+The schema for the database and helper methods to simplify API behavior are in models.py:
+
+   * There are four tables created: Recipe, Item, Mesuare, and RecipeItem.
+   * The Recipe table is used by the roles 'user' and 'administrator' to get a list of existing recipes.
+   * The Item table  is used for a storage list of items, that is using for recipes.
+   * The Mesuare table is used for storage list of measures, that is using for indicating couth of items in recipes.
+   * The Product table has a foreign key on the User table for user_id.
+   * The Recipe table, Item table, and Mesuare table have foreign keys on the RecipeItem table for recipe_id, item_id, and mesuare_id accordingly.
+   * The Recipe table is used by the role 'administrator' to add new recipes.
+   * The RecipeItem is used by the role 'administrator' to bind recipe's items and amount of them with recipe.
+   * The Recipe table has an insert, update, delete, and format helper functions.
+   * The RecipeItem has delete, and format helper functions.
+
 
 ### Backend
 
@@ -38,12 +54,13 @@ Follow instructions to install the latest version of python for your platform in
 
 We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organaized. Instructions for setting up a virual enviornment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 
+
 #### PIP Dependencies
 
 Once you have your virtual environment setup and running, install dependencies by running:
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 This will install all of the required packages we selected within the `requirements.txt` file.
@@ -62,9 +79,17 @@ From within the project directory first ensure you are working using your create
 
 To run the server, execute:
 
+**On Linux :**
 ```bash
-export FLASK_APP=flaskr
+export FLASK_APP=api.py
 export FLASK_ENV=development
+flask run
+```
+
+**On Windows :**
+```bash
+set FLASK_APP=api.py;
+set FLASK_ENV=development
 flask run
 ```
 

@@ -1,13 +1,18 @@
 import json
-from flask import request, _request_ctx_stack, abort
+import os
+from flask import (
+    request,
+    _request_ctx_stack,
+    abort
+)
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
 
-AUTH0_DOMAIN = 'easylist.eu.auth0.com'
-ALGORITHMS = ['RS256']
-API_AUDIENCE = 'recipe'
+AUTH0_DOMAIN = os.environ['AUTH0_DOMAIN']
+ALGORITHMS = os.environ['ALGORITHMS']
+API_AUDIENCE = os.environ['API_AUDIENCE']
 
 # AuthError Exception
 '''
