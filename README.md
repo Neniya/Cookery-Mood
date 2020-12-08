@@ -113,11 +113,13 @@ Setting the `FLASK_APP` variable to `flaskr` directs flask to use the `flaskr` d
     - Register 2 users - assign the User role to one and Administrator role to the other.
     - Sign into each account and make note of the tokens.
     - Import the postman collection `cookery-mood.postman_collection.json`
-    - Right-clicking the collection folder for user and administrator, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).   
+        --> Import -> directory/warranty-tracker-test-endpoints.postman_collection.json
+    - Right-clicking the collection folder for user and administrator, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).  
 
 
 ## **API**
-* Base URL: At present this app can be run locally and is hosted on [Heroku](https://heroku.com). The backend upp is hosted at the default, `http://127.0.0.1:5000/`, or `https://cookerymood.herokuapp.com/`
+* Base URL: At present this app can be run locally (`http://127.0.0.1:5000/`) and can also be open via Heroku using the URL:
+ `https://cookerymood.herokuapp.com/`
 * Authentication: This application uses the Auth0 authentication method. Please see below for more details.
 
 ### Setup Auth0
@@ -409,7 +411,12 @@ The API will return five error types when requests fail:
     "success": true
 }
 ```
+## **Deployment**
+The app is hosted live on heroku at the URL: 
+https://cookerymood.herokuapp.com/
 
+However, there is no frontend for this app yet, and it can only be presently used to authenticate using Auth0 by entering
+credentials and retrieving a fresh token to use with curl, unit test, or postman.
 
 ## **Authors**
 Kotova Evgeniia
